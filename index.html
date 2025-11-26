@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Talent</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        .navbar-brand { font-weight: 700; color: #ff6b35 !important; }
+        .nav-link { color: #333 !important; font-weight: 500; }
+        .nav-link.active { color: #ff6b35 !important; }
+
+        .hero {
+            background: linear-gradient(rgba(255,107,53,0.8), rgba(247,147,30,0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>'); /* Placeholder gradient */
+            color: white;
+            padding: 200px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230076ff" opacity="0.1" width="1200" height="600"/></svg>'); /* Subtle pattern */
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 20px; }
+        .hero p { font-size: 1.4rem; margin-bottom: 40px; opacity: 0.9; }
+
+        .btn-primary, .btn-outline-primary {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary { background: #000000; border: none; }
+        .btn-primary:hover { background: #ff6b35; transform: translateY(-3px); }
+        .btn-outline-primary { border: 2px solid #000000; color: #ffffff; }
+        .btn-outline-primary:hover { background: #ffffff; color: rgb(0, 0, 0); transform: translateY(-3px); }
+
+        .features-section, .about-section, .portfolio-section, .testimonials-section, .team-section {
+            padding: 100px 0;
+        }
+        .features-section { background: #fff; }
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            height: 100%;
+        }
+        .feature-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
+        .feature-icon { font-size: 3.5rem; color: #ff6b35; margin-bottom: 20px; }
+
+        .about-section { background: #f8f9fa; }
+        .about-img { height: 400px; background: #ddd; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 4rem; }
+
+        .portfolio-section { background: #fff; }
+        .portfolio-filters .nav-link { color: #ff6b35; }
+        .portfolio-item { margin-bottom: 30px; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .portfolio-item:hover { transform: scale(1.05); }
+        .portfolio-img { height: 250px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; }
+
+        .testimonials-section { background: linear-gradient(135deg, #f7931e, #ff6b35); color: white; }
+        .testimonial-carousel .carousel-item { text-align: center; padding: 50px 20px; }
+        .testimonial-text { font-size: 1.3rem; font-style: italic; margin-bottom: 20px; }
+        .testimonial-author { font-weight: 600; }
+
+        .team-section { background: #f8f9fa; }
+        .team-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            text-align: center;
+            padding: 30px 20px;
+            height: 100%;
+        }
+        .team-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
+        .team-img {
+            width: 120px; height: 120px; border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #ddd; display: flex; align-items: center; justify-content: center;
+            color: #999; font-size: 3rem;
+        }
+
+        .cta-section {
+            background: #333;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .cta-section form { max-width: 500px; margin: 0 auto; }
+        .cta-section input { border-radius: 50px; padding: 15px 20px; border: none; margin-right: 10px; }
+        .cta-section button { border-radius: 50px; padding: 15px 30px; background: #ff6b35; border: none; color: white; }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        footer a { color: #ff6b35; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Media Talent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" data-aos="fade-in" data-aos-duration="1500">
+        <div class="container hero-content">
+            <h1>Welcome to Media Talent</h1>
+            <p class="lead">We craft innovative digital experiences that drive success. Let's build something amazing together.</p>
+            <div>
+                <a href="services.html" class="btn btn-primary me-3">Our Services</a>
+                <a href="#portfolio" class="btn btn-outline-primary">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Key Features</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <i class="fas fa-laptop-code feature-icon"></i>
+                        <h3>Web Development</h3>
+                        <p>Custom websites that perform and convert.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt feature-icon"></i>
+                        <h3>Mobile Apps</h3>
+                        <p>Seamless apps for all platforms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        <h3>Digital Marketing</h3>
+                        <p>Grow your brand online effectively.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <i class="fas fa-palette feature-icon"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Beautiful, user-centered designs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>Security</h3>
+                        <p>Robust protection for your digital assets.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-card">
+                        <i class="fas fa-headset feature-icon"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Always here when you need us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Snippet -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-img"><i class="fas fa-building"></i></div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h2>A Digital Agency You Can Trust</h2>
+                    <p>With over 10 years of experience, we deliver cutting-edge solutions that blend creativity and technology. Join hundreds of satisfied clients who've transformed their businesses with us.</p>
+                    <div class="row mt-4">
+                        <div class="col-6"><div class="stat-item" id="stat1">10</div><small>Years</small></div>
+                        <div class="col-6"><div class="stat-item" id="stat2">250</div><small>Projects</small></div>
+                    </div>
+                    <a href="about-us.html" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Portfolio</h2>
+            <ul class="nav nav-pills portfolio-filters justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                <li class="nav-item"><a class="nav-link active" href="#all" data-filter="all">All</a></li>
+                <li class="nav-item"><a class="nav-link" href="#web" data-filter="web">Web</a></li>
+                <li class="nav-item"><a class="nav-link" href="#app" data-filter="app">Apps</a></li>
+                <li class="nav-item"><a class="nav-link" href="#design" data-filter="design">Design</a></li>
+            </ul>
+            <div class="row portfolio-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-4 col-md-6 web"><div class="portfolio-item"><div class="portfolio-img">Web Project 1</div><div class="p-3"><h5>Project Title</h5><p>Brief description.</p></div></div></div>
+                <div class="col-lg-4 col-md-6 app"><div class="portfolio-item"><div class="portfolio-img">App Project</div><div class="p-3"><h5>Mobile App</h5><p>Innovative app solution.</p></div></div></div>
+                <div class="col-lg-4 col-md-6 design"><div class="portfolio-item"><div class="portfolio-img">Design Work</div><div class="p-3"><h5>UI Design</h5><p>Creative interface.</p></div></div></div>
+                <!-- Add more items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">What Our Clients Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="zoom-in">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-text">"Amazing team! Transformed our online presence."</div>
+                        <div class="testimonial-author">- Client A, CEO</div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-text">"Outstanding results and great support."</div>
+                        <div class="testimonial-author">- Client B, Founder</div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-text">"Highly recommend for digital innovation."</div>
+                        <div class="testimonial-author">- Client C, Manager</div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Meet Our Team</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-card">
+                        <div class="team-img"><i class="fas fa-user"></i></div>
+                        <h5>John Doe</h5>
+                        <p>CEO</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-card">
+                        <div class="team-img"><i class="fas fa-user"></i></div>
+                        <h5>Jane Smith</h5>
+                        <p>Designer</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-card">
+                        <div class="team-img"><i class="fas fa-user"></i></div>
+                        <h5>Mike Johnson</h5>
+                        <p>Developer</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-card">
+                        <div class="team-img"><i class="fas fa-user"></i></div>
+                        <h5>Sarah Lee</h5>
+                        <p>Marketer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container" data-aos="fade-up">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p class="mb-4">Stay updated with the latest digital trends and offers.</p>
+            <form>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Your email address">
+                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Digital Agency. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+            <div class="mt-3">
+                <a href="#" class="me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, easing: 'ease-out', duration: 1000 });
+    </script>
+
+    <!-- Stats Counter JS (for about snippet) -->
+    <script>
+        function animateStat(id, target) {
+            let current = 0;
+            const increment = target / 200;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    document.getElementById(id).textContent = target;
+                    clearInterval(timer);
+                } else {
+                    document.getElementById(id).textContent = Math.floor(current);
+                }
+            }, 10);
+        }
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStat('stat1', 10);
+                    animateStat('stat2', 250);
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        });
+        statObserver.observe(document.querySelector('.about-section'));
+    </script>
+
+    <!-- Simple Portfolio Filter JS -->
+    <script>
+        document.querySelectorAll('.portfolio-filters a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.portfolio-filters .active').forEach(a => a.classList.remove('active'));
+                link.classList.add('active');
+                const filter = link.dataset.filter;
+                document.querySelectorAll('.portfolio-grid > div').forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
