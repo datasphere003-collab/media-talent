@@ -4,393 +4,396 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Talent</title>
-
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- AOS Animation Library -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <!-- Google Fonts: Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body, html {
-            margin: 0; padding: 0; height: 100%;
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+        
+        :root {
+            --tw-color-green: #fff700;
         }
-        .navbar {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            padding: 1rem 0;
+        
+        * {
+            font-family: 'Inter', system_ui, sans-serif;
         }
-        .navbar-brand { font-weight: 700; color: #ff6b35 !important; }
-        .nav-link { color: #333 !important; font-weight: 500; }
-        .nav-link.active { color: #ff6b35 !important; }
+        
+        body {
+            background: #030303;
+        }
+        
+        .hero-text {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 2.8rem;
+            }
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            color: #030303;
+        }
+        
+        .nav-link:hover {
+            color: #ffae36;
+            transform: translateY(-1px);
+        }
+        
+        .image-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .image-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(241, 243, 242, 0.2);
+        }
+        
+        .logo-dot {
+            animation: pulse 2s infinite;
+        }
 
-        .hero {
-            background: linear-gradient(rgba(255,107,53,0.8), rgba(247,147,30,0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>'); /* Placeholder gradient */
-            color: white;
-            padding: 200px 0;
-            text-align: center;
+        .brand-logo {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .brand-logo:hover {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .service-bar {
+            animation: pulse 2s infinite;
+        }
+
+        /* Who We Are Section */
+        .who-we-are-bg {
+            background: #ff8401;
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230076ff" opacity="0.1" width="1200" height="600"/></svg>'); /* Subtle pattern */
+        
+        .who-we-are-content {
+            position: relative;
+            z-index: 10;
         }
-        .hero-content { position: relative; z-index: 2; }
-        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 20px; }
-        .hero p { font-size: 1.4rem; margin-bottom: 40px; opacity: 0.9; }
 
-        .btn-primary, .btn-outline-primary {
-            padding: 15px 40px;
-            border-radius: 50px;
+        /* Achievements Section */
+        .achievements-bg {
+            background: #111111;
+        }
+        
+        .achievement-number {
+            font-size: 4.5rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #00ff9f;
+        }
+        
+        .achievement-label {
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s;
-        }
-        .btn-primary { background: #000000; border: none; }
-        .btn-primary:hover { background: #ff6b35; transform: translateY(-3px); }
-        .btn-outline-primary { border: 2px solid #000000; color: #ffffff; }
-        .btn-outline-primary:hover { background: #ffffff; color: rgb(0, 0, 0); transform: translateY(-3px); }
-
-        .features-section, .about-section, .portfolio-section, .testimonials-section, .team-section {
-            padding: 100px 0;
-        }
-        .features-section { background: #fff; }
-        .feature-card {
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s;
-            height: 100%;
-        }
-        .feature-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
-        .feature-icon { font-size: 3.5rem; color: #ff6b35; margin-bottom: 20px; }
-
-        .about-section { background: #f8f9fa; }
-        .about-img { height: 400px; background: #ddd; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 4rem; }
-
-        .portfolio-section { background: #fff; }
-        .portfolio-filters .nav-link { color: #ff6b35; }
-        .portfolio-item { margin-bottom: 30px; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .portfolio-item:hover { transform: scale(1.05); }
-        .portfolio-img { height: 250px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; }
-
-        .testimonials-section { background: linear-gradient(135deg, #f7931e, #ff6b35); color: white; }
-        .testimonial-carousel .carousel-item { text-align: center; padding: 50px 20px; }
-        .testimonial-text { font-size: 1.3rem; font-style: italic; margin-bottom: 20px; }
-        .testimonial-author { font-weight: 600; }
-
-        .team-section { background: #f8f9fa; }
-        .team-card {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s;
-            text-align: center;
-            padding: 30px 20px;
-            height: 100%;
-        }
-        .team-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
-        .team-img {
-            width: 120px; height: 120px; border-radius: 50%;
-            margin: 0 auto 20px;
-            background: #ddd; display: flex; align-items: center; justify-content: center;
-            color: #999; font-size: 3rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
-        .cta-section {
-            background: #333;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
+        /* NEW: Get In Touch Section - Exact match to the image */
+        .get-in-touch-bg {
+            background: #111111;
         }
-        .cta-section form { max-width: 500px; margin: 0 auto; }
-        .cta-section input { border-radius: 50px; padding: 15px 20px; border: none; margin-right: 10px; }
-        .cta-section button { border-radius: 50px; padding: 15px 30px; background: #ff6b35; border: none; color: white; }
-
-        footer {
-            background: #222;
-            color: white;
-            padding: 40px 0 20px;
-            text-align: center;
+        
+        .get-in-touch-title {
+            font-size: 4.8rem;
+            line-height: 1.05;
+            font-weight: 900;
+            color: #00ff9f;
         }
-        footer a { color: #ff6b35; text-decoration: none; }
+        
+        .contact-info {
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
     </style>
 </head>
-<body>
+<body class="text-white">
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="flex items-center">
+                    <div class="relative">
+                        <span class="text-5xl font-black tracking-[-4px] text-[#F0199D]">Media </span>
+                        <span class="text-5xl font-black tracking-[-4px] text-[#FFA500]">Talent</span>
+                        <div class="absolute -top-3 left-4 flex gap-1">
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full"></span>
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full animation-delay-300"></span>
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full animation-delay-600"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Media Talent</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <div class="hidden md:flex items-center gap-x-10 text-sm font-bold uppercase tracking-widest">
+                <a href="#" class="nav-link">HOME</a>
+                <a href="#" class="nav-link">INFLUENCERS</a>
+                <a href="#" class="nav-link">ABOUT US</a>
+                <a href="#" class="nav-link">CONTACT</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-black/10 px-8 py-6">
+            <div class="flex flex-col gap-y-6 text-sm font-bold uppercase tracking-widest">
+                <a href="#" class="nav-link">HOME</a>
+                <a href="#" class="nav-link">INFLUENCERS</a>
+                <a href="#" class="nav-link">ABOUT US</a>
+                <a href="#" class="nav-link">CONTACT</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" data-aos="fade-in" data-aos-duration="1500">
-        <div class="container hero-content">
-            <h1>Welcome to Media Talent</h1>
-            <p class="lead">We craft innovative digital experiences that drive success. Let's build something amazing together.</p>
+    <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-12">
+        <div class="text-center">
+            <h1 class="hero-text max-w-5xl mx-auto">
+                <span class="text-[#FFA500]">From Strategy to Success,</span><br>
+                We’ve Got You Covered.
+            </h1>
+        </div>
+
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <div class="image-card text-center">
+                <div class="border-4 border-white rounded-3xl overflow-hidden bg-white/5">
+                    <img src="https://picsum.photos/id/1015/800/600" alt="VWS" class="w-full h-80 object-cover">
+                </div>
+                <p class="mt-6 text-4xl font-bold tracking-[6px] text-white">Mumtaz</p>
+            </div>
+            <div class="image-card text-center">
+                <div class="border-4 border-white rounded-3xl overflow-hidden bg-white/5">
+                    <img src="https://picsum.photos/id/1005/800/600" alt="SHAHVEER" class="w-full h-80 object-cover">
+                </div>
+                <p class="mt-6 text-4xl font-bold tracking-[6px] text-white">Image</p>
+            </div>
+            <div class="image-card text-center">
+                <div class="border-4 border-white rounded-3xl overflow-hidden bg-white/5">
+                    <img src="https://picsum.photos/id/1009/800/600" alt="MERUB" class="w-full h-80 object-cover">
+                </div>
+                <p class="mt-6 text-4xl font-bold tracking-[6px] text-white">Image</p>
+            </div>
+            <div class="image-card text-center">
+                <div class="border-4 border-white rounded-3xl overflow-hidden bg-white/5">
+                    <img src="https://picsum.photos/id/1016/800/600" alt="RHS" class="w-full h-80 object-cover">
+                </div>
+                <p class="mt-6 text-4xl font-bold tracking-[6px] text-white">Image</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRUSTED BY BRANDS SECTION -->
+    <div class="max-w-screen-2xl mx-auto px-8 py-20 bg-[#030303]">
+        <div class="flex justify-center items-center gap-6 md:gap-10 flex-wrap">
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-[#00A6E6] rounded-full flex items-center justify-center text-white shadow-2xl ring-4 ring-white/30 flex-col text-center">
+                <div class="text-3xl font-black tracking-widest leading-none">VINCÉ</div>
+                <div class="text-[10px] font-medium leading-none mt-px">Beautiful Skin Matters</div>
+            </div>
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30">
+                <div class="flex items-center">
+                    <div class="text-red-600 text-6xl font-black leading-none">S</div>
+                    <div class="text-[#1C2C5E] text-xl font-bold tracking-widest ml-1">SUZUKI</div>
+                </div>
+            </div>
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30 text-center">
+                <div>
+                    <div class="text-[#FF6B00] text-4xl font-black tracking-wider">Soul</div>
+                    <div class="text-black text-xl font-bold -mt-2">Fest</div>
+                </div>
+            </div>
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30">
+                <div class="text-[#1C2C5E] text-5xl font-bold tracking-[-3px]">KIA</div>
+            </div>
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-[#E30613] rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30">
+                <div class="text-white text-6xl font-black">MG</div>
+            </div>
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30">
+                <div class="text-black text-4xl font-bold">realme</div>
+            </div>
+            <div class="brand-logo w-24 h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-white/30">
+                <div class="flex flex-col items-center">
+                    <div class="bg-[#E30613] text-white text-4xl font-black w-12 h-12 flex items-center justify-center rounded">T</div>
+                    <div class="text-black text-xl font-bold tracking-widest">TOYOTA</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16">
+            <h2 class="text-[#FFA500] text-5xl md:text-6xl font-bold uppercase tracking-[4px] leading-none">
+                TRUSTED BY LEADING GLOBAL AND<br>LOCAL BRANDS
+            </h2>
+            <p class="mt-10 max-w-3xl mx-auto text-white/90 text-lg leading-relaxed px-4">
+                We are proud to partner with leading brands across various industries, helping them amplify their message through strategic influencer marketing and PR. Join our growing list of satisfied clients and let's create something impactful together.
+            </p>
+        </div>
+    </div>
+
+    <!-- OUR SERVICES SECTION -->
+    <div class="max-w-screen-2xl mx-auto px-8 py-20 bg-[#030303]">
+        <div class="text-center">
+            <div class="flex justify-center mb-6">
+                <div class="h-2 w-14 bg-[#FFA500]"></div>
+            </div>
+            <h2 class="text-[#FFA500] text-6xl md:text-7xl font-black uppercase tracking-[6px] leading-none">
+                OUR SERVICES
+            </h2>
+        </div>
+
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-14 max-w-7xl mx-auto">
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Influencer<br>Management</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Influencer<br>Marketing</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Strategic<br>Planning</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Creative<br>Development</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Digital &amp;<br>Conventional PR</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Social<br>Media</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">Digital<br>Marketing</p>
+            </div>
+            <div class="text-center">
+                <div class="flex justify-center mb-4"><div class="h-1.5 w-12 bg-[#00ff9f] service-bar"></div></div>
+                <p class="text-white text-2xl font-semibold leading-tight">E-Commerce<br>Marketing</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHO WE ARE SECTION -->
+    <div class="who-we-are-bg max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="who-we-are-content text-center">
+            <h1 class="text-black text-6xl md:text-7xl font-black uppercase tracking-[6px] leading-none mb-10">
+                WHO<br>WE ARE
+            </h1>
+            <div class="max-w-4xl mx-auto text-black text-lg md:text-xl leading-relaxed px-4">
+                1Degree Media is a leading PR &amp; Influencer marketing agency that connects brands with the right 
+                influencers to create meaningful and results-driven campaigns. We specialize in leveraging social 
+                media trends and influencer partnerships to drive brand awareness, engagement, and 
+                conversions. Our tailored strategies ensure that every campaign delivers maximum impact and 
+                measurable success.
+            </div>
+            <div class="mt-16">
+                <a href="#" class="inline-block border-2 border-black text-black px-12 py-5 text-xl font-semibold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- OUR ACHIEVEMENTS SECTION -->
+    <div class="achievements-bg max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="text-center">
+            <div class="flex justify-center mb-6">
+                <div class="h-1.5 w-14 bg-[#00ff9f]"></div>
+            </div>
+            <h1 class="text-[#00ff9f] text-6xl md:text-7xl font-black uppercase tracking-[6px] leading-none mb-16">
+                OUR<br>ACHIEVEMENTS
+            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="achievement-number">100+</div>
+                    <div class="achievement-label mt-3 text-white">SUCCESSFUL<br>CAMPAIGNS</div>
+                </div>
+                <div class="text-center">
+                    <div class="achievement-number">50+</div>
+                    <div class="achievement-label mt-3 text-white">BRAND<br>PARTNERED</div>
+                </div>
+                <div class="text-center">
+                    <div class="achievement-number">2B+</div>
+                    <div class="achievement-label mt-3 text-white">AUDIENCE<br>REACHED</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: GET IN TOUCH SECTION (Added exactly as per the latest image) -->
+    <div class="get-in-touch-bg max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left Side - Big Title -->
             <div>
-                <a href="services.html" class="btn btn-primary me-3">Our Services</a>
-                <a href="#portfolio" class="btn btn-outline-primary">View Portfolio</a>
+                <div class="flex justify-start mb-6">
+                    <div class="h-1.5 w-14 bg-[#00ff9f]"></div>
+                </div>
+                <h1 class="get-in-touch-title leading-none">
+                    GET IN<br>TOUCH
+                </h1>
             </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Our Key Features</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card">
-                        <i class="fas fa-laptop-code feature-icon"></i>
-                        <h3>Web Development</h3>
-                        <p>Custom websites that perform and convert.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card">
-                        <i class="fas fa-mobile-alt feature-icon"></i>
-                        <h3>Mobile Apps</h3>
-                        <p>Seamless apps for all platforms.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line feature-icon"></i>
-                        <h3>Digital Marketing</h3>
-                        <p>Grow your brand online effectively.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-card">
-                        <i class="fas fa-palette feature-icon"></i>
-                        <h3>UI/UX Design</h3>
-                        <p>Beautiful, user-centered designs.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="feature-card">
-                        <i class="fas fa-shield-alt feature-icon"></i>
-                        <h3>Security</h3>
-                        <p>Robust protection for your digital assets.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="feature-card">
-                        <i class="fas fa-headset feature-icon"></i>
-                        <h3>24/7 Support</h3>
-                        <p>Always here when you need us.</p>
-                    </div>
+            <!-- Right Side - Contact Details -->
+            <div class="contact-info text-white">
+                <p class="text-[#00ff9f] text-2xl font-semibold mb-6">We can't wait to hear from you</p>
+                
+                <p class="mb-8">
+                    Building 81, 4th floor, Defence RAYA<br>
+                    DHA Phase 6, Lahore
+                </p>
+                
+                <p class="mb-2 font-medium">business@1degree.media</p>
+                <p class="mb-1">(+92) 3218054444</p>
+                <p class="mb-8">(+92) 3700076981</p>
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-6">
+                    <a href="#" 
+                       class="inline-block border-2 border-[#00ff9f] text-[#00ff9f] hover:bg-[#00ff9f] hover:text-black px-10 py-6 text-xl font-semibold uppercase tracking-widest transition-all duration-300">
+                        Client Form
+                    </a>
+                    <a href="#" 
+                       class="inline-block border-2 border-[#00ff9f] text-[#00ff9f] hover:bg-[#00ff9f] hover:text-black px-10 py-6 text-xl font-semibold uppercase tracking-widest transition-all duration-300">
+                        Influencer Form
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- About Snippet -->
-    <section class="about-section">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="about-img"><i class="fas fa-building"></i></div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <h2>A Digital Agency You Can Trust</h2>
-                    <p>With over 10 years of experience, we deliver cutting-edge solutions that blend creativity and technology. Join hundreds of satisfied clients who've transformed their businesses with us.</p>
-                    <div class="row mt-4">
-                        <div class="col-6"><div class="stat-item" id="stat1">10</div><small>Years</small></div>
-                        <div class="col-6"><div class="stat-item" id="stat2">250</div><small>Projects</small></div>
-                    </div>
-                    <a href="about-us.html" class="btn btn-primary mt-3">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio-section" id="portfolio">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Our Portfolio</h2>
-            <ul class="nav nav-pills portfolio-filters justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                <li class="nav-item"><a class="nav-link active" href="#all" data-filter="all">All</a></li>
-                <li class="nav-item"><a class="nav-link" href="#web" data-filter="web">Web</a></li>
-                <li class="nav-item"><a class="nav-link" href="#app" data-filter="app">Apps</a></li>
-                <li class="nav-item"><a class="nav-link" href="#design" data-filter="design">Design</a></li>
-            </ul>
-            <div class="row portfolio-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="col-lg-4 col-md-6 web"><div class="portfolio-item"><div class="portfolio-img">Web Project 1</div><div class="p-3"><h5>Project Title</h5><p>Brief description.</p></div></div></div>
-                <div class="col-lg-4 col-md-6 app"><div class="portfolio-item"><div class="portfolio-img">App Project</div><div class="p-3"><h5>Mobile App</h5><p>Innovative app solution.</p></div></div></div>
-                <div class="col-lg-4 col-md-6 design"><div class="portfolio-item"><div class="portfolio-img">Design Work</div><div class="p-3"><h5>UI Design</h5><p>Creative interface.</p></div></div></div>
-                <!-- Add more items as needed -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">What Our Clients Say</h2>
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="zoom-in">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-text">"Amazing team! Transformed our online presence."</div>
-                        <div class="testimonial-author">- Client A, CEO</div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-text">"Outstanding results and great support."</div>
-                        <div class="testimonial-author">- Client B, Founder</div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-text">"Highly recommend for digital innovation."</div>
-                        <div class="testimonial-author">- Client C, Manager</div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Meet Our Team</h2>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-card">
-                        <div class="team-img"><i class="fas fa-user"></i></div>
-                        <h5>John Doe</h5>
-                        <p>CEO</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="team-card">
-                        <div class="team-img"><i class="fas fa-user"></i></div>
-                        <h5>Jane Smith</h5>
-                        <p>Designer</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="team-card">
-                        <div class="team-img"><i class="fas fa-user"></i></div>
-                        <h5>Mike Johnson</h5>
-                        <p>Developer</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="team-card">
-                        <div class="team-img"><i class="fas fa-user"></i></div>
-                        <h5>Sarah Lee</h5>
-                        <p>Marketer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <div class="container" data-aos="fade-up">
-            <h2>Subscribe to Our Newsletter</h2>
-            <p class="mb-4">Stay updated with the latest digital trends and offers.</p>
-            <form>
-                <div class="input-group">
-                    <input type="email" class="form-control" placeholder="Your email address">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Digital Agency. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
-            <div class="mt-3">
-                <a href="#" class="me-3"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, easing: 'ease-out', duration: 1000 });
-    </script>
-
-    <!-- Stats Counter JS (for about snippet) -->
-    <script>
-        function animateStat(id, target) {
-            let current = 0;
-            const increment = target / 200;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    document.getElementById(id).textContent = target;
-                    clearInterval(timer);
-                } else {
-                    document.getElementById(id).textContent = Math.floor(current);
-                }
-            }, 10);
+        function initializeTailwind() {
+            return { config(userConfig = {}) { return { content: [], theme: { extend: {} }, plugins: [], ...userConfig } } }
         }
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStat('stat1', 10);
-                    animateStat('stat2', 250);
-                    statObserver.unobserve(entry.target);
-                }
-            });
-        });
-        statObserver.observe(document.querySelector('.about-section'));
-    </script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTailwind().config()
+        })
 
-    <!-- Simple Portfolio Filter JS -->
-    <script>
-        document.querySelectorAll('.portfolio-filters a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.querySelectorAll('.portfolio-filters .active').forEach(a => a.classList.remove('active'));
-                link.classList.add('active');
-                const filter = link.dataset.filter;
-                document.querySelectorAll('.portfolio-grid > div').forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu')
+            menu.classList.toggle('hidden')
+        }
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        console.log('%c✅ Media Talent website fully updated!', 'color:#00ff9f; font-size:18px; font-weight:bold')
+        console.log('✅ GET IN TOUCH section added exactly like the image at the very end!')
+        console.log('Copy this complete code and save as .html file')
+    </script>
 </body>
 </html>
