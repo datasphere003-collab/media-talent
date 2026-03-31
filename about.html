@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Media Talent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+        
+        :root {
+            --tw-color-green: #fff700;
+        }
+        
+        * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        body {
+            background: #030303;
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            color: #030303;
+        }
+        
+        .nav-link:hover {
+            color: #ffae36;
+            transform: translateY(-1px);
+        }
+        
+        .logo-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .about-bg {
+            background: #111111;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- HEADER - Exact copy from home.html -->
+    <nav class="bg-white border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="flex items-center">
+                    <div class="relative">
+                        <span class="text-5xl font-black tracking-[-4px] text-[#F0199D]">Media </span>
+                        <span class="text-5xl font-black tracking-[-4px] text-[#FFA500]">Talent</span>
+                        <div class="absolute -top-3 left-4 flex gap-1">
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full"></span>
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full animation-delay-300"></span>
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full animation-delay-600"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-x-10 text-sm font-bold uppercase tracking-widest">
+                <a href="home.html" class="nav-link">HOME</a>
+                <a href="influencer.html" class="nav-link">INFLUENCERS</a>
+                <a href="about.html" class="nav-link text-[#FFA500]">ABOUT US</a>
+                <a href="#" class="nav-link">CONTACT</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-black/10 px-8 py-6">
+            <div class="flex flex-col gap-y-6 text-sm font-bold uppercase tracking-widest text-black">
+                <a href="home.html" class="nav-link">HOME</a>
+                <a href="influencer.html" class="nav-link">INFLUENCERS</a>
+                <a href="about.html" class="nav-link">ABOUT US</a>
+                <a href="#" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BODY - Image wala portion (About Us section from your image) -->
+    <div class="about-bg py-24">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Exact title and subtitle from image -->
+                <h1 class="text-7xl md:text-8xl font-black text-[#00ff9f] tracking-[-2px] mb-6">
+                    About Us
+                </h1>
+                <h2 class="text-4xl md:text-5xl font-medium text-white mb-16">
+                    Finding Inspiration in Every Turn
+                </h2>
+                
+                <!-- Paragraph exactly as in the image -->
+                <div class="text-lg md:text-xl leading-relaxed text-white/90 max-w-3xl mx-auto">
+                    1Degree Media was founded with a vision to bridge the gap between brands and their audiences through authentic and impactful influencer marketing. Recognizing the power of digital storytelling, we set out to create campaigns that not only amplify brand messages but also foster genuine connections. Over the years, we have built a network of trusted influencers and developed data-driven strategies that help brands stand out in a crowded digital landscape. Our journey is driven by creativity, innovation, and a passion for delivering measurable success to our clients.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER - New clean footer (consistent with home.html design) -->
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-4 gap-10">
+                <!-- Logo -->
+                <div>
+                    <div class="flex items-center">
+                        <span class="text-4xl font-black tracking-[-3px] text-[#F0199D]">Media </span>
+                        <span class="text-4xl font-black tracking-[-3px] text-[#FFA500]">Talent</span>
+                    </div>
+                    <p class="text-white/60 mt-4 text-sm">Premium Influencer Marketing &amp; PR Agency</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-[#FFA500] font-semibold mb-4 uppercase tracking-widest text-sm">Quick Links</h4>
+                    <ul class="space-y-3 text-white/70 text-sm">
+                        <li><a href="home.html" class="hover:text-white">Home</a></li>
+                        <li><a href="influencer.html" class="hover:text-white">Influencers</a></li>
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Services</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-[#FFA500] font-semibold mb-4 uppercase tracking-widest text-sm">Services</h4>
+                    <ul class="space-y-3 text-white/70 text-sm">
+                        <li>Influencer Management</li>
+                        <li>Influencer Marketing</li>
+                        <li>Digital &amp; Conventional PR</li>
+                        <li>Social Media Strategy</li>
+                    </ul>
+                </div>
+
+                <!-- Contact (from home.html Get In Touch) -->
+                <div>
+                    <h4 class="text-[#FFA500] font-semibold mb-4 uppercase tracking-widest text-sm">Get In Touch</h4>
+                    <p class="text-white/70">DHA Phase 6, Lahore</p>
+                    <p class="text-white/70 mt-1">mediatalent@gmail.com</p>
+                    <p class="text-white/70">(+92) 300 0000000</p>
+                    <div class="mt-8 text-xs text-white/40">
+                        © 2025 Media Talent. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu')
+            menu.classList.toggle('hidden')
+        }
+
+        console.log('%c✅ About Us page ready! (Header + Image wala section + Footer)', 'color:#00ff9f; font-size:16px; font-weight:bold')
+    </script>
+</body>
+</html>
