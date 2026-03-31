@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Media Talent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+        
+        :root {
+            --tw-color-green: #00ff9f;
+        }
+        
+        * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        body {
+            background: #030303;
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            color: #030303;
+        }
+        
+        .nav-link:hover {
+            color: #ffae36;
+            transform: translateY(-1px);
+        }
+        
+        .logo-dot {
+            animation: pulse 2s infinite;
+        }
+
+        /* Contact Us Section - Exact match to your image */
+        .contact-section {
+            background: #0a0a0a;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .contact-title {
+            font-size: 5.5rem;
+            line-height: 1.05;
+            font-weight: 900;
+            color: #00ff9f;
+            text-shadow: 0 0 40px rgba(0, 255, 159, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-title {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- HEADER (copied exactly from home.html) -->
+    <nav class="bg-white border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="flex items-center">
+                    <div class="relative">
+                        <span class="text-5xl font-black tracking-[-4px] text-[#F0199D]">Media </span>
+                        <span class="text-5xl font-black tracking-[-4px] text-[#FFA500]">Talent</span>
+                        <div class="absolute -top-3 left-4 flex gap-1">
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full"></span>
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full animation-delay-300"></span>
+                            <span class="logo-dot w-2 h-2 bg-[#FFA500] rounded-full animation-delay-600"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-x-10 text-sm font-bold uppercase tracking-widest">
+                <a href="home.html" class="nav-link">HOME</a>
+                <a href="influencer.html" class="nav-link">INFLUENCERS</a>
+                <a href="about.html" class="nav-link">ABOUT US</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-black/10 px-8 py-6">
+            <div class="flex flex-col gap-y-6 text-sm font-bold uppercase tracking-widest text-black">
+                <a href="home.html" class="nav-link">HOME</a>
+                <a href="influencer.html" class="nav-link">INFLUENCERS</a>
+                <a href="about.html" class="nav-link">ABOUT US</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BODY - IMAGE WALA PORTION (Exact match to your provided image) -->
+    <div class="contact-section flex items-center py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            
+            <!-- Title -->
+            <h1 class="contact-title mb-12 text-[#FFA500]">
+                Contact Us
+            </h1>
+
+            <!-- Description -->
+            <div class="max-w-2xl mx-auto text-white/90 text-xl leading-relaxed mb-16">
+                <p class="mb-6">We'd Love to Hear From You!</p>
+                <p class="mb-8">Have questions, ideas, or just want to say hello? Reach out to us and we'll get back to you as soon as possible.</p>
+                <p>Whether it's a collaboration or a quick inquiry, we're here to help.</p>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-20">
+                
+                <!-- PhoneNo -->
+                <div>
+                    <h3 class="text-[#FFA500] text-4xl font-bold tracking-widest mb-8">PhoneNo</h3>
+                    <div class="text-3xl font-medium space-y-6">
+                        <p>(+92) 3218054444</p>
+                        <p>(+92) 3700076981</p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <h3 class="text-[#FFA500] text-4xl font-bold tracking-widest mb-8">Email</h3>
+                    <p class="text-3xl font-medium">business@1degree.media</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER (Clean, matching the site's dark aesthetic) -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center text-white/60 text-sm">
+                <div class="mb-6 md:mb-0">
+                    © 2025 Media Talent • 1Degree Media. All Rights Reserved.
+                </div>
+                <div class="flex gap-x-8 text-xs uppercase tracking-widest">
+                    <a href="#" class="hover:text-[#00ff9f] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#00ff9f] transition-colors">Terms &amp; Conditions</a>
+                    <a href="#" class="hover:text-[#00ff9f] transition-colors">Instagram</a>
+                </div>
+                <div class="text-white/40 text-xs mt-6 md:mt-0">
+                    Made with ❤️ in Lahore, Pakistan
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu')
+            menu.classList.toggle('hidden')
+        }
+
+        console.log('%c✅ Single HTML page created successfully! (Header + Image Contact Section + Footer)', 'color:#00ff9f; font-size:18px; font-weight:bold')
+    </script>
+</body>
+</html>
