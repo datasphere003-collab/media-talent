@@ -56,20 +56,19 @@
 
         /* Form Styles */
         .form-container {
-            background: #111111;
+            background: #ffffff;
             border-radius: 24px;
             padding: 40px;
         }
         
         .form-input {
-            background: #1a1a1a;
+            background: #0b0b0b;
             border: 2px solid #333;
             transition: all 0.3s ease;
         }
         
         .form-input:focus {
-            border-color: #00ff9f;
-            box-shadow: 0 0 0 4px rgba(0, 255, 159, 0.2);
+            border-color: #F0199D;
             outline: none;
         }
         
@@ -170,12 +169,12 @@
                     <form onsubmit="handleSubmit(event, 'Client')" class="space-y-8">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">FULL NAME *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">FULL NAME *</label>
                                 <input type="text" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="John Doe">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">COMPANY NAME</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">COMPANY NAME</label>
                                 <input type="text" 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="Your Brand / Company">
                             </div>
@@ -183,26 +182,26 @@
                         
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">EMAIL ADDRESS *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">EMAIL ADDRESS *</label>
                                 <input type="email" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="you@company.com">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">PHONE NUMBER *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">PHONE NUMBER *</label>
                                 <input type="tel" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="+92 300 1234567">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-sm font-semibold mb-2 text-white/80">TELL US ABOUT YOUR CAMPAIGN / PROJECT</label>
+                            <label class="block text-sm font-semibold mb-2 text-black/80">TELL US ABOUT YOUR CAMPAIGN / PROJECT</label>
                             <textarea required rows="5"
                                       class="form-input w-full px-6 py-5 rounded-3xl text-lg resize-none" 
                                       placeholder="What are you looking to achieve? Budget, timeline, target audience etc."></textarea>
                         </div>
 
                         <button type="submit"
-                                class="w-full bg-[#FFA500] hover:bg-[#FFA500] text-black font-bold text-2xl py-6 rounded-3xl transition-all duration-300">
+                                class="w-full bg-[#F0199D] text-black font-bold text-2xl py-6 rounded-3xl transition-all duration-300">
                             SEND CLIENT INQUIRY
                         </button>
                     </form>
@@ -213,12 +212,12 @@
                     <form onsubmit="handleSubmit(event, 'Influencer')" class="space-y-8">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">FULL NAME *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">FULL NAME *</label>
                                 <input type="text" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="Your Name">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">INSTAGRAM / TIKTOK HANDLE *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">INSTAGRAM / TIKTOK HANDLE *</label>
                                 <input type="text" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="@yourhandle">
                             </div>
@@ -226,12 +225,12 @@
                         
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">EMAIL ADDRESS *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">EMAIL ADDRESS *</label>
                                 <input type="email" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="you@email.com">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">PHONE NUMBER *</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">PHONE NUMBER *</label>
                                 <input type="tel" required 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="+92 300 1234567">
                             </div>
@@ -239,12 +238,12 @@
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">FOLLOWER COUNT</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">FOLLOWER COUNT</label>
                                 <input type="text" 
                                        class="form-input w-full px-6 py-5 rounded-2xl text-lg" placeholder="50K+">
                             </div>
                             <div>
-                                <label class="block text-sm font-semibold mb-2 text-white/80">NICHE / CATEGORY</label>
+                                <label class="block text-sm font-semibold mb-2 text-black/80">NICHE / CATEGORY</label>
                                 <select class="form-input w-full px-6 py-5 rounded-2xl text-lg">
                                     <option>Fashion &amp; Lifestyle</option>
                                     <option>Beauty &amp; Skincare</option>
@@ -257,14 +256,14 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-semibold mb-2 text-white/80">WHY DO YOU WANT TO JOIN MEDIA TALENT?</label>
+                            <label class="block text-sm font-semibold mb-2 text-black/80">WHY DO YOU WANT TO JOIN MEDIA TALENT?</label>
                             <textarea rows="4"
                                       class="form-input w-full px-6 py-5 rounded-3xl text-lg resize-none" 
                                       placeholder="Tell us about yourself and your content style..."></textarea>
                         </div>
 
                         <button type="submit"
-                                class="w-full bg-[#00ff9f] hover:bg-[#00cc7a] text-black font-bold text-2xl py-6 rounded-3xl transition-all duration-300">
+                                class="w-full bg-[#F0199D] text-black font-bold text-2xl py-6 rounded-3xl transition-all duration-300">
                             JOIN AS INFLUENCER
                         </button>
                     </form>
